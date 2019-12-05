@@ -59026,6 +59026,10 @@ var MarkerClient = (function (EventEmitter2) {
           var oldNode = this.markers[name];
           oldNode.unsubscribeTf();
           this.rootObject.remove(oldNode);
+          oldNode.children.forEach(function (child) {
+            child.dispose();
+          });
+          delete(this.markers[name]);
           this.emit('change');
       } else {
           var that = this;
@@ -59052,6 +59056,10 @@ var MarkerClient = (function (EventEmitter2) {
     if (oldNode) {
       oldNode.unsubscribeTf();
       this.rootObject.remove(oldNode);
+      oldNode.children.forEach(function (child) {
+        child.dispose();
+      });
+      delete(this.markers[message.ns + message.id]);
     } else if (this.lifetime) {
       this.checkTime(message.ns + message.id);
     }
