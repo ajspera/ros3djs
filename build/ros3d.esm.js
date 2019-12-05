@@ -56882,6 +56882,7 @@ var Marker = (function (superclass) {
             scene.remove(mesh);
           });
           element.remove(scene);
+          element.dispose();
         });
       } else {
         if (element.geometry !== undefined) {

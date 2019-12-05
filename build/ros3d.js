@@ -56707,6 +56707,7 @@ class Marker extends THREE$2.Object3D {
             scene.remove(mesh);
           });
           element.remove(scene);
+          element.dispose();
         });
       } else {
         if (element.geometry !== undefined) {
